@@ -1,0 +1,33 @@
+<div class="container mt-4">
+  <div class="mt-4">
+    <h2 class="text-center">
+      Attendance Report of {{ user.firstName }} {{ user.lastName }} </h2>
+
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+        <tr>
+          <th> Date</th>
+          <th> Day</th>
+          <th>Entry Time</th>
+          <th>Exit Time</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let report of reports">
+
+          <td>{{ report.date | date:'yyyy-MM-dd '}}</td>
+          <td>{{ report.day }}</td>
+          <td>{{ report.entryTime | timeFormat :'12-hour' }}</td>
+          <td>{{ report.exitTime | timeFormat :'12-hour' }}</td>
+
+
+        </tr>
+        <tr *ngIf="reports.length === 0">
+          <td colspan="3" class="text-center">No Tasks found</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

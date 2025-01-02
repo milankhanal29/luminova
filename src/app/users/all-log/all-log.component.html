@@ -1,0 +1,31 @@
+<div class="container mt-4">
+<div class="mt-4">
+  <h2 class="text-center">
+    Daily Logs of {{ user.firstName }} {{ user.lastName }} </h2>
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead class="table-dark">
+      <tr>
+        <th>Date</th>
+        <th>Task Done</th>
+        <th>Blogger</th>
+        <th>Activity Type</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let log of dailyLogs">
+
+        <td>{{ log.date | date:'yyyy-MM-dd '}}</td>
+        <td>{{ log.taskDone }}</td>
+        <td>{{ log.blogger || 'N/A' }}</td>
+        <td>{{ log.activityType }}</td>
+      </tr>
+      <tr *ngIf="dailyLogs.length === 0">
+        <td colspan="3" class="text-center">No logs found</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>

@@ -1,0 +1,121 @@
+/* Profile Card */
+.profile-card {
+  width: 100%;
+  max-width: 400px; /* Limiting the max width */
+  background-color: #302e2f;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: auto; /* Center the profile card */
+}
+
+.profile-header {
+  padding: 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.profile-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-img {
+  width: 100%;
+  max-width: 200px;
+}
+
+.profile-content {
+  padding: 20px;
+}
+
+.profile-image-container {
+  text-align: center;
+}
+
+.profile-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.profile-details {
+  margin-top: 20px;
+}
+
+.profile-field {
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+.profile-label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.profile-value {
+  color: white;
+  cursor: pointer;
+}
+
+.profile-actions {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.logout-button {
+  border: none;
+  background-color: red;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background-color: #ffab00;
+}
+
+.close-button {
+  border: none;
+  background: red;
+  cursor: pointer;
+  font-size: 16px;
+  color: white;
+}
+
+.close-button:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Styles */
+@media (max-width: 767px) {
+  .profile-card {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .logo-img {
+    max-width: 150px;
+  }
+
+  .profile-image {
+    width: 120px;
+    height: 120px;
+  }
+
+  .profile-details {
+    margin-top: 15px;
+  }
+
+  .logout-button {
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .profile-card {
+    width: 80%;
+  }
+}

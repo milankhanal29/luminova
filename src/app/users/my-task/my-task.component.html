@@ -1,0 +1,53 @@
+<div class="container mt-4">
+<div class="mt-4">
+  <h2 class="text-center">
+    Assigned Task of {{ user.firstName }} {{ user.lastName }} </h2>
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead class="table-dark">
+      <tr>
+        <th>Assigned Date</th>
+        <th>Task Name</th>
+        <th>Description</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let task of tasks">
+
+        <td>{{ task.createdDate | date:'yyyy-MM-dd '}}</td>
+        <td>{{ task.name }}</td>
+        <td>{{ task.description }}</td>
+        <td>
+          <!-- Display status first, then show dropdown when it's being changed -->
+          <div *ngIf="!isEditingStatus[task.id]">
+    <span class="badge" [ngClass]="getStatusClass(task.status)">
+      {{ task.status }}
+    </span>
+            <button class="btn btn-sm btn-outline-primary ml-2" (click)="startEditingStatus(task)">
+              <i class="fas fa-edit"></i> Change Status
+            </button>
+          </div>
+
+          <div *ngIf="isEditingStatus[task.id]" class="form-inline">
+            <form [formGroup]="taskForm">
+              <select class="form-control form-control-sm" formControlName="status" (change)="onStatusChange(task)">
+                <option *ngFor="let status of statusOptions" [value]="status">{{ status }}</option>
+              </select>
+              <button type="button" class="btn btn-sm btn-outline-success ml-2" (click)="stopEditingStatus(task)">
+                <i class="fas fa-check"></i> Save
+              </button>
+            </form>
+          </div>
+        </td>
+
+      </tr>
+      <tr *ngIf="tasks.length === 0">
+        <td colspan="3" class="text-center">No Tasks found</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>

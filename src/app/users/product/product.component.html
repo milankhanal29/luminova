@@ -1,0 +1,63 @@
+<div class="container mt-4">
+  <h2 class="text-center mb-4">
+    Attendance for {{ attendanceForm.value.year }}-{{ attendanceForm.value.month }}
+  </h2>
+
+  <!-- Month and Year Selection -->
+  <form [formGroup]="attendanceForm" (ngSubmit)="onFormChange()">
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label for="month" class="form-label">Select Month:</label>
+        <select id="month" class="form-select" formControlName="month">
+          <option *ngFor="let m of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]" [value]="m">
+            {{ m }}
+          </option>
+        </select>
+      </div>
+      <div class="col-md-6">
+        <label for="year" class="form-label">Select Year:</label>
+        <input id="year" type="number" class="form-control" formControlName="year" />
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary d-none">Submit</button>
+  </form>
+
+  <!-- Attendance Table -->
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead class="table-dark">
+      <tr>
+        <th>Date</th>
+        <th>Day</th>
+        <th>Entry Time</th>
+        <th>Exit Time</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let attendance of attendances">
+        <td>{{ attendance.date }}</td>
+        <td>{{ attendance.day }}</td>
+        <td>{{ attendance.entryTime || 'N/A' }}</td>
+        <td>{{ attendance.exitTime || 'N/A' }}</td>
+      </tr>
+      <tr *ngIf="attendances.length === 0">
+        <td colspan="4" class="text-center">No records found for the selected month and year.</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Pagination -->
+  <div class="d-flex justify-content-between mt-3">
+    <button
+      class="btn btn-primary"
+      (click)="previousPage()"
+      [disabled]="page === 0"
+    >
+      <i class="bi bi-arrow-left"></i> Previous
+    </button>
+    <button class="btn btn-primary" (click)="nextPage()">
+      Next <i class="bi bi-arrow-right"></i>
+    </button>
+  </div>
+</div>

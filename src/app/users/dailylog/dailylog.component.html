@@ -1,0 +1,83 @@
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Daily Log</h2>
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <form [formGroup]="dailyLogForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="date" class="form-label">Date</label>
+          <input
+            id="date"
+            type="date"
+            class="form-control"
+            formControlName="date"
+            (change)="onDateChange()"
+          />
+        </div>
+
+        <div class="form-group mt-3">
+          <label for="taskDone" class="form-label">Task Done</label>
+          <textarea
+            id="taskDone"
+            class="form-control"
+            rows="3"
+            formControlName="taskDone"
+            placeholder="Describe the task you completed"
+          ></textarea>
+        </div>
+
+        <div class="form-group mt-3">
+          <label for="blogger" class="form-label">Blockers (Optional)</label>
+          <textarea
+            id="blogger"
+            class="form-control"
+            rows="2"
+            formControlName="blogger"
+            placeholder="Optional: Mention if you have any problems"
+          ></textarea>
+        </div>
+
+        <div class="form-group mt-3">
+          <label for="activityType" class="form-label">Activity Type</label>
+          <select
+            id="activityType"
+            class="form-control"
+            formControlName="activityType"
+          >
+            <option value="STUDY">Study</option>
+            <option value="WORK">Work</option>
+          </select>
+        </div>
+
+        <div class="mt-4 text-center">
+          <button type="submit" class="btn btn-primary">Add Daily Log</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="mt-4">
+    <h3 class="text-center">Your Daily Logs for {{ dailyLogForm.value.date }}</h3>
+
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+        <tr>
+          <th>Task Done</th>
+          <th>Blogger</th>
+          <th>Activity Type</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let log of dailyLogs">
+          <td>{{ log.taskDone }}</td>
+          <td>{{ log.blogger || 'N/A' }}</td>
+          <td>{{ log.activityType }}</td>
+        </tr>
+        <tr *ngIf="dailyLogs.length === 0">
+          <td colspan="3" class="text-center">No daily logs found for this date.</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

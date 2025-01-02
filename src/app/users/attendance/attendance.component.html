@@ -1,0 +1,26 @@
+<div class="attendance-container">
+  <div class="clock-container">
+    <div class="clock">
+      <span>{{ currentTime }}</span>
+    </div>
+    <div class="date">
+      <strong>{{ currentDate }}</strong>
+    </div>
+  </div>
+
+  <form (ngSubmit)="isEntryMarked ? markExitAttendance() : markEntryAttendance()">
+    <div class="form-group">
+      <label for="entryTime">Entry Time</label>
+      <input
+        type="text"
+        id="entryTime"
+        class="form-control"
+        [value]="entryTime"
+        readonly
+      />
+    </div>
+    <button type="submit" class="btn btn-primary">
+      {{ isEntryMarked ? 'Mark Checkout' : 'Mark Attendance' }}
+    </button>
+  </form>
+</div>

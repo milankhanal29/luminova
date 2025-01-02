@@ -1,0 +1,28 @@
+<div class="container mt-4">
+  <h2>Tasks </h2>
+  <table class="table">
+    <thead>
+    <tr>
+
+      <th scope="col">Assigned Date</th>
+      <th scope="col">Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">Assigned To</th>
+      <th scope="col">Status</th>
+      <th scope="col">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let task of tasks">
+      <td>{{ task.createdDate | date:'short' }}</td>
+      <td>{{ task.name }}</td>
+      <td>{{ task.description }}</td>
+      <td>{{ task.description }}</td>
+      <td>{{ task.status }}</td>
+      <td>
+        <button class="btn btn-danger" (click)="deleteTask(task.id)">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
