@@ -1,0 +1,75 @@
+<div class="container mt-5">
+  <div class="card shadow-lg border-0">
+    <div class="card-header bg-dark text-white">
+      <h4 class="mb-0 text-center">Send Notice</h4>
+    </div>
+    <div class="card-body p-4">
+      <form [formGroup]="noticeForm" (ngSubmit)="sendNotice()">
+        <!-- Title Field -->
+        <div class="mb-4">
+          <label for="title" class="form-label fw-bold">Title</label>
+          <input
+            type="text"
+            id="title"
+            formControlName="title"
+            class="form-control border-2"
+            [ngClass]="{ 'is-invalid': noticeForm.get('title')?.invalid && noticeForm.get('title')?.touched }"
+          />
+          <div class="invalid-feedback" *ngIf="noticeForm.get('title')?.errors?.['required']">
+            Title is required.
+          </div>
+          <div class="invalid-feedback" *ngIf="noticeForm.get('title')?.errors?.['maxlength']">
+            Maximum 100 characters allowed.
+          </div>
+        </div>
+
+        <!-- Content Field -->
+        <div class="mb-4">
+          <label for="content" class="form-label fw-bold">Content</label>
+          <textarea
+            id="content"
+            formControlName="content"
+            rows="4"
+            class="form-control border-2"
+            [ngClass]="{ 'is-invalid': noticeForm.get('content')?.invalid && noticeForm.get('content')?.touched }"
+          ></textarea>
+          <div class="invalid-feedback" *ngIf="noticeForm.get('content')?.errors?.['required']">
+            Content is required.
+          </div>
+        </div>
+
+        <!-- Select Users -->
+        <div class="mb-4">
+          <label for="users" class="form-label fw-bold">Select Users</label>
+          <div class="user-grid mb-3">
+            <div
+              *ngFor="let user of users"
+              class="user-card"
+              [class.selected]="selectedUsers.includes(user.id)"
+              (click)="toggleUserSelection(user.id)"
+            >
+              {{ user.firstName }}
+            </div>
+          </div>
+          <div class="d-flex justify-content-between">
+            <button type="button" class="btn btn-sm btn-outline-success" (click)="selectAllUsers()">Select All</button>
+            <button type="button" class="btn btn-sm btn-outline-danger" (click)="unselectAllUsers()">Unselect All</button>
+          </div>
+          <div class="text-danger mt-2" *ngIf="noticeForm.get('userIds')?.errors?.['required']">
+            Please select at least one user.
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="text-center">
+          <button type="submit" class="btn btn-dark w-100 py-2" [disabled]="noticeForm.invalid">
+            Send Notice
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+    {{ errorMessage }}
+  </div>
+</div>

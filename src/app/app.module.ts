@@ -20,9 +20,8 @@ import { PaymentSuccessComponent } from './payment/payment-success/payment-succe
 import { PaymentFailureComponent } from './payment/payment-failure/payment-failure.component';
 import { ProfileComponent } from './users/profile/profile.component';
 import { NotificationComponent } from './shared/notification/notification.component';
-import { DailylogComponent } from './users/dailylog/dailylog.component';
-import { AttendanceComponent } from './users/attendance/attendance.component';
 import {DatePipe} from "@angular/common";
+import { NoticeComponent } from './admin/notice/notice/notice.component';
 export function tokenGetter() {
   return localStorage.getItem("token");
 }
@@ -38,6 +37,7 @@ export function tokenGetter() {
     PaymentFailureComponent,
     ProfileComponent,
     NotificationComponent,
+    NoticeComponent,
   ],
 
   imports: [

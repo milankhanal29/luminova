@@ -1,0 +1,42 @@
+.user-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 10px;
+}
+
+.user-card {
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.user-card:hover {
+  background-color: #e0e0e0;
+  transform: scale(1.05);
+}
+
+.user-card.selected {
+  background-color: #6c757d;
+  color: #fff;
+  border-color: #6c757d;
+  font-weight: bold;
+}
+
+.card-header {
+  background-color: #343a40 !important;
+  color: white !important;
+}
+
+.btn-dark {
+  background-color: #6c757d !important;
+  border-color: #6c757d !important;
+}
+
+.btn-dark:hover {
+  background-color: #5a6268 !important;
+  border-color: #545b62 !important;
+}

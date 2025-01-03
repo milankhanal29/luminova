@@ -8,6 +8,7 @@ import {UpdateProductComponent} from "../../admin/task/update-product/update-pro
 import {AttendanceListComponent} from "../../admin/attendances/attendance-list/attendance-list.component";
 import {ProductDetailsComponent} from "../../admin/task/product-details/product-details.component";
 import {UserDetailsComponent} from "../../admin/user/user-details/user-details.component";
+import {NoticeComponent} from "../../admin/notice/notice/notice.component";
 
 const routes: Routes = [
   {
@@ -20,6 +21,7 @@ const routes: Routes = [
       { path: 'attendance', component: AttendanceListComponent },
       { path: 'dashboard', component: DashboardComponent },
       { path: 'add-task', component: AddTaskComponent },
+      { path: 'send-notice', component: NoticeComponent },
       { path: 'product/:id', component: ProductDetailsComponent },
       { path: 'user/:id', component: UserDetailsComponent },
 
